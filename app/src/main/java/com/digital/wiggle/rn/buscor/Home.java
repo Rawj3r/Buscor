@@ -19,8 +19,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentActivity;
 
 
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -51,6 +49,7 @@ public class Home extends FragmentActivity
 
     private static TextView balance;
     final Context context = this;
+    private static Button test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +58,14 @@ public class Home extends FragmentActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         balance = (TextView) findViewById(R.id.balance);
-
+        test = (Button)findViewById(R.id.test);
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Home.this, BusStations.class);
+                startActivity(i);
+            }
+        });
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -160,8 +166,7 @@ public class Home extends FragmentActivity
         } else if (id == R.id.logout) {
             logout();
         } else if (id == R.id.bus_station) {
-            Intent i = new Intent(this, BusStations.class);
-            startActivity(i);
+
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
@@ -326,8 +331,14 @@ public class Home extends FragmentActivity
             }
 
             try{
-                String balance = jsonObject.getString("balance");
-                Home.balance.setText("Your current Buscor balance is "+balance);
+
+                if (jsonObject != null){
+                    String balance = jsonObject.getString("balance");
+                    Home.balance.setText("Your current Buscor balance is "+balance);
+                }else{
+                    Toast.makeText(Home.this, "could not get relevant data", Toast.LENGTH_SHORT).show();
+                }
+
             }catch (JSONException e){
                 e.printStackTrace();
             }

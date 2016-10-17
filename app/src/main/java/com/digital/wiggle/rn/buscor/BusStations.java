@@ -25,13 +25,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class BusStations extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
-    private static final LatLng paradise = new LatLng(-25.505306, 31.336984);
-    private static final LatLng sbusisiwe = new LatLng(-25.504431, 31.341467);
-    private static final LatLng zcc = new LatLng(-25.518645, 31.338867);
-    private static final LatLng emagezini = new LatLng(-25.514878, 31.338740);
-    private static final LatLng station1 = new LatLng(-25.511265, 31.339617);
-    private static final LatLng bizzicona = new LatLng(-25.500960, 31.336201);
-    private static final LatLng funindlela = new LatLng(-25.502826, 31.349362);
+    private LatLng paradise = new LatLng(-25.505306, 31.336984);
+    private LatLng sbusisiwe = new LatLng(-25.504431, 31.341467);
+    private  LatLng zcc = new LatLng(-25.518645, 31.338867);
+    private LatLng emagezini = new LatLng(-25.514878, 31.338740);
+    private  LatLng station1 = new LatLng(-25.511265, 31.339617);
+    private  LatLng bizzicona = new LatLng(-25.500960, 31.336201);
+    private  LatLng funindlela = new LatLng(-25.502826, 31.349362);
 
     private GoogleApiClient googleApiClient;
 
@@ -83,22 +83,21 @@ public class BusStations extends FragmentActivity implements OnMapReadyCallback,
                 .position(bizzicona)
                 .title("BizziCona bus station")
         );
-        mBizzicona.setTag(0);
+
 
         mEmagezini = mMap.addMarker(new MarkerOptions()
                 .position(emagezini)
                 .title("Emagezini bus station")
         );
-        mEmagezini.setTag(0);
+
         mFunindlela = mMap.addMarker(new MarkerOptions().position(funindlela).title("Funindlela bus station"));
-        mFunindlela.setTag(0);
+
         mParadise = mMap.addMarker(new MarkerOptions().position(paradise).title("Paradise Bus station"));
         mSbusisiwe = mMap.addMarker(new MarkerOptions().position(sbusisiwe).title("Sbusisiwe Bus station"));
-        mStation1 = mMap.addMarker(new MarkerOptions().position(sbusisiwe).title("Bus Station"));
+        mStation1 = mMap.addMarker(new MarkerOptions().position(station1).title("Bus Station"));
         mZcc = mMap.addMarker(new MarkerOptions().position(zcc).title("ZCC "));
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(funindlela));
-        mMap.setMinZoomPreference(14.0f);
 
     }
 
