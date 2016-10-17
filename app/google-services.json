@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "394159719740",
+    "project_id": "firebase-buscore"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394159719740:android:72c720c6d8f7821b",
+        "android_client_info": {
+          "package_name": "com.digital.wiggle.rn.buscor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "394159719740-32k4moht3dlabe5p0ccoiduhkdn2sj5c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.digital.wiggle.rn.buscor",
+            "certificate_hash": "B38B9776B58463E93AFEAABEA1336F05A9DCE721"
+          }
+        },
+        {
+          "client_id": "394159719740-6det9fn16u594iq8dg4qq7osiitre4gc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCg24slB0AJCR59j0y_wzeY_Ae15aD8qFI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
