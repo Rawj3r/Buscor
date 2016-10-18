@@ -21,6 +21,7 @@ import android.support.v4.app.FragmentActivity;
 
 import android.util.Base64;
 import android.util.Log;
+import android.view.MenuInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -49,7 +50,7 @@ public class Home extends FragmentActivity
 
     private static TextView balance;
     final Context context = this;
-    private static Button test;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,25 +58,9 @@ public class Home extends FragmentActivity
         setContentView(R.layout.activity_home);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        balance = (TextView) findViewById(R.id.balance);
-        test = (Button)findViewById(R.id.test);
-        test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Home.this, BusStations.class);
-                startActivity(i);
-            }
-        });
+//        balance = (TextView) findViewById(R.id.balance);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -85,6 +70,7 @@ public class Home extends FragmentActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setItemIconTintList(null);
         new GetBalance().execute();
 //        printKeyHash(Home.this);
     }
@@ -102,7 +88,8 @@ public class Home extends FragmentActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home, menu);
         return true;
     }
 
@@ -166,9 +153,11 @@ public class Home extends FragmentActivity
         } else if (id == R.id.logout) {
             logout();
         } else if (id == R.id.bus_station) {
-
-        } else if (id == R.id.nav_manage) {
-
+            Intent i = new Intent(Home.this, BusStations.class);
+            startActivity(i);
+        } else if (id == R.id.nearest_bus) {
+            Intent i = new Intent(Home.this, NearestBus.class);
+            startActivity(i);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
@@ -306,7 +295,7 @@ public class Home extends FragmentActivity
         protected void onPreExecute() {
             super.onPreExecute();
             progressDialog = new ProgressDialog(Home.this);
-            progressDialog.setMessage("Authenticating...");
+            progressDialog.setMessage("Please wait...");
             progressDialog.setIndeterminate(false);
             progressDialog.setCancelable(true);
             progressDialog.show();
@@ -334,7 +323,7 @@ public class Home extends FragmentActivity
 
                 if (jsonObject != null){
                     String balance = jsonObject.getString("balance");
-                    Home.balance.setText("Your current Buscor balance is "+balance);
+//                    Home.balance.setText(balance);
                 }else{
                     Toast.makeText(Home.this, "could not get relevant data", Toast.LENGTH_SHORT).show();
                 }

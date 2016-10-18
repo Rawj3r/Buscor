@@ -24,4 +24,6 @@
     <string name="facebook_app_id">317016818675342</string>
     <string name="title_activity_bus_stations">Map</string>
     <string name="title_activity_get_station">Map</string>
+    <string name="title_activity_nearest_bus">Buscor</string>
+    <string name="welcome">Hi, Welcome to the Buscor mobile app, now you can buy your bus ticket, search for nearest buses, view travel time between locations and more wherever you are and whenever you like.</string>
 </resources>

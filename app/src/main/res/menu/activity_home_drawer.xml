@@ -2,28 +2,33 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
         <item
             android:id="@+id/makeDepo"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_playlist_add_black_24dp"
             android:title="Recharge your Account" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
+            android:id="@+id/nearest_bus"
+            android:icon="@drawable/ic_directions_bus_black_24dp"
             android:title="Nearest bus" />
         <item
             android:id="@+id/bus_station"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_directions_subway_black_24dp"
             android:title="Nearest bus station" />
         <item
             android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_pin_drop_black_24dp"
             android:title="Locate store" />
         <item
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_contacts_black_24dp"
             android:title="Profile" />
         <item
             android:id="@+id/logout"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_cancel_black_24dp"
             android:title="Log Out" />
     </group>
 
