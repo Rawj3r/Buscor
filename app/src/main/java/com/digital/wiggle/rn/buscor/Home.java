@@ -13,12 +13,13 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 
+
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 
 
+import android.support.v4.view.ViewPager;
 import android.util.Base64;
 import android.util.Log;
 import android.view.MenuInflater;
@@ -50,6 +51,8 @@ public class Home extends FragmentActivity
 
     private static TextView balance;
     final Context context = this;
+    TabLayout tabLayout;
+    ViewPager viewPager;
 
 
     @Override
@@ -58,9 +61,27 @@ public class Home extends FragmentActivity
         setContentView(R.layout.activity_home);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        balance = (TextView) findViewById(R.id.balance);
+        balance = (TextView) findViewById(R.id.balance);
 
+        viewPager = (ViewPager) findViewById(R.id.main_tab_content);
 
+        tabLayout = (TabLayout)findViewById(R.id.tab_layout);
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -189,7 +210,8 @@ public class Home extends FragmentActivity
             public void onClick(View v) {
                 String pin = recharge.getText().toString();
                 new LoadAccount().execute(pin);
-                dialog.dismiss();
+                Intent intent = new Intent(Home.this, Home.class);
+                startActivity(intent);
             }
         });
         dialog.show();
@@ -323,7 +345,7 @@ public class Home extends FragmentActivity
 
                 if (jsonObject != null){
                     String balance = jsonObject.getString("balance");
-//                    Home.balance.setText(balance);
+                    Home.balance.setText("My Buscor balance: "+balance);
                 }else{
                     Toast.makeText(Home.this, "could not get relevant data", Toast.LENGTH_SHORT).show();
                 }

@@ -13,6 +13,17 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="custText" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="titleTextColor">#FFF</item>
+    </style>
+
+    <style name="custTab" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/custText</item>
+        <item name="titleTextColor">@style/custText</item>
+        <item name="android:textColor">@style/custTab</item>
+    </style>
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
